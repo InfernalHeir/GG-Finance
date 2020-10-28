@@ -1,0 +1,23 @@
+{
+  "name": "ggfinance",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "test": "truffle test",
+    "compile": "truffle compile",
+    "migrate": "truffle migrate --network ropsten"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "^3.2.0",
+    "@truffle/hdwallet-provider": "^1.1.1",
+    "@uniswap/v2-core": "^1.0.1"
+  },
+  "devDependencies": {
+    "bignumber.js": "^9.0.1",
+    "chai": "^4.2.0",
+    "chai-bignumber": "^3.0.0",
+    "dotenv": "^8.2.0",
+    "truffle": "^5.1.50"
+  }
+}
