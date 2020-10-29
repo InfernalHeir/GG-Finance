@@ -1,8 +1,9 @@
 const HDWalletProvider = require('@truffle/hdwallet-provider');
 require("dotenv").config();
 
-const infuraKey = process.env.INFURA_KEY;
-const mnemonic = process.env.MNEMONICS;
+const infuraKey = process.env.INFURA_URL;
+const privatekey = process.env.PRIVATE_KEY;
+
 //
 // const fs = require('fs');
 // const mnemonic = fs.readFileSync(".secret").toString().trim();
@@ -17,7 +18,10 @@ module.exports = {
    network_id: "*",    
    },
    ropsten: {
-    provider: () => new HDWalletProvider(mnemonic, infuraKey),
+    provider: () => new HDWalletProvider({
+      privateKeys: [privatekey],
+      providerOrUrl: infuraKey
+    }),
     network_id: 3,  
     },
 
