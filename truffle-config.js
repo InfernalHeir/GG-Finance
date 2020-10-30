@@ -2,11 +2,8 @@ const HDWalletProvider = require('@truffle/hdwallet-provider');
 require("dotenv").config();
 
 const infuraKey = process.env.INFURA_URL;
-const privatekey = process.env.PRIVATE_KEY;
+const privateKey = process.env.PRIVATE_KEY;
 
-//
-// const fs = require('fs');
-// const mnemonic = fs.readFileSync(".secret").toString().trim();
 
 module.exports = {
  
@@ -17,12 +14,15 @@ module.exports = {
    port: 8545,            
    network_id: "*",    
    },
-   ropsten: {
+   rinkyby: {
     provider: () => new HDWalletProvider({
-      privateKeys: [privatekey],
+      privateKeys: [privateKey],
       providerOrUrl: infuraKey
     }),
-    network_id: 3,  
+    network_id: 4,
+    confirmations: 2,
+    timoutBlocks: 2,
+    gasPrice: 25e9
     },
 
     // Useful for private networks
@@ -36,20 +36,20 @@ module.exports = {
   // Set default mocha options here, use special reporters etc.
   mocha: {
     // timeout: 100000
+    useColors:true
   },
 
   // Configure your compilers
   compilers: {
     solc: {
-      version: "^0.6.0",    // Fetch exact version from solc-bin (default: truffle's version)
-      // docker: true,        // Use "0.5.1" you've installed locally with docker (default: false)
-      // settings: {          // See the solidity docs for advice about optimization and evmVersion
-      //  optimizer: {
-      //    enabled: false,
-      //    runs: 200
-      //  },
-      //  evmVersion: "byzantium"
-      // }
+      version: "0.6.2",    // Fetch exact version from solc-bin (default: truffle's version)
+      settings: {          // See the solidity docs for advice about optimization and evmVersion
+      optimizer: {
+        enabled: false,
+        runs: 200
+      },
+     evmVersion: "petersburg"
+      }
     },
   },
 };

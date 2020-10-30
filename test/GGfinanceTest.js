@@ -1,28 +1,28 @@
-const GGfinance = artifacts.require("GGfinance");
+const GGXContract = artifacts.require("GGXContract");
 const { assert } = require("chai");
 const chai = require("chai");
 
 chai.use(require("chai-bignumber")());
 
-contract("GGfinance", async (accounts) => {
+contract("GGXContract", async (accounts) => {
     const owner = accounts[0];
 
     beforeEach(async () => {
-        this.tokenInstance = await GGfinance.deployed();
+        this.tokenInstance = await GGXContract.deployed();
     })
 
     //check name of contract
 
     it("should be a name", async () => {
         const tokenName = await  this.tokenInstance.name();
-        assert.equal("GG finance",tokenName, "tokenName is not Mached");
+        assert.equal("GGX",tokenName, "tokenName is not Mached");
     })
     
      //check symbol of contract
 
     it("should be a symbol", async () => {
         const tokenSymbol = await  this.tokenInstance.symbol();
-        assert.equal("GGF",tokenSymbol, "tokenSymbol is not Mached");
+        assert.equal("GGX",tokenSymbol, "tokenSymbol is not Mached");
     })
  
     // test decimals of contract
